@@ -4,13 +4,17 @@ const path=require("path")
 const rootDir=require('../util/path')
 
 
+const products=[]
+
 router.get('/add-Product',(req,res,next)=>{
     res.sendFile(path.join(rootDir,'views','add-product.html'))
 })
 
 router.post('/add-product',(req,res,next)=>{
-    console.log(req.body);
-    res.redirect('/')
+    products.push({title:req.body.title})
+    res.redirect('/shop')
 })
 
-module.exports=router
+
+exports.routes=router
+exports.products=products
