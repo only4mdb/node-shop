@@ -10,8 +10,6 @@ class Product {
     }
 
     save() {
-
-
         files.readFile(p, (err, fileContent) => {
             let products = [];
             if (!err) {
@@ -25,6 +23,7 @@ class Product {
         //files.writeFileSync("productdb.js",JSON.stringify(products))
     }
 
+    //cb --> CallBack
     static fetchAll(cb) {
         files.readFile(p, (err, fileContent) => {
             if(err){
