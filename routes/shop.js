@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
-const path=require("path")
+const path=require("path");
+const { render } = require("pug");
 const rootDir=require('../util/path')
 const admin = require('./admin');
 const data = {
@@ -11,8 +12,8 @@ const data = {
 
 
 router.get('/', (req, res, next) => {
-    console.log(admin.products)
-    res.sendFile(path.join(rootDir,'views','shop.html'))
+    const products=admin.products
+    res.render("shop",{prods:products,docTitle:"Shop"})
 })
 
 router.get('/Log', (req, res,next) => {
